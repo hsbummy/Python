@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS product
+CREATE TABLE IF NOT EXISTS product(
+	pcoid CHAR(3) NOT NULL,
+	pserial CHAR(4) NOT NULL,
+	pname NVARCHAR(10) NOT NULL,
+	pprice INT(10) NOT NULL,
+	qt INT(10) NOT NULL
+);
+
+ALTER TABLE product ADD CONSTRAINT mypk PRIMARY KEY (pcoid, pserial);
+ALTER TABLE product ALTER COLUMN pprice SET DEFAULT 10000;
+ALTER TABLE product ADD CONSTRAINT mycheck CHECK (qt > 0);
+ALTER TABLE product ADD CONSTRAINT myunique UNIQUE (pname);
+ALTER TABLE product DROP CONSTRAINT mycheck;
+
+SELECT * FROM items
+# DEFAULT 10000 심플하게

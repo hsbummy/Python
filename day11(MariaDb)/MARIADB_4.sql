@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS users(
+	id CHAR(11),
+	pwd NVARCHAR(10),
+	name NVARCHAR(20)
+);
+
+ALTER TABLE users ADD CONSTRAINT users_pk PRIMARY KEY (id);
+
+CREATE TABLE IF NOT EXISTS items(
+	id INT(10) AUTO_INCREMENT PRIMARY KEY,
+	name NVARCHAR(20),
+	price INT(5),
+	regdate DATE
+);
+
+ALTER TABLE items AUTO_INCREMENT = 1000;
+ 
+
+INSERT INTO items VALUES (id, 'item05',10000, CURRENT_DATE);
+INSERT INTO users (id, name) VALUES ('id01','james');
+INSERT INTO users VALUES ('id02','pwd02','kim');
+
+DELETE FROM items WHERE id=1005
+
+UPDATE items SET name='item05' WHERE id=1003
