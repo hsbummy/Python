@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        div{
+            width: 300px;
+            border: 2px solid rebeccapurple;
+        }
+    </style>
+    <script>
+        function display(data){
+            users = data.datas;
+            result = '';
+            $(users).each(function(index,item){
+                result += '<h1>'
+                result += item.id+' '+item.name+' '+item.age;
+                result += '</h1>'
+            });
+            $('div').html(result);
+        };
+        function getData(){
+            $.ajax({
+                url:'getuser/',
+                success:function(data){
+                    display(data)
+                },
+                error:function(){}
+            });
+
+
+        };
+        $(document).ready(function(){
+            setInterval(getData,3000)
+            $('button').click(function(){
+                getData();
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>AJAX Main Page</h1>
+    <button>GET DATA</button>
+    <div></div>
+</body>
+</html>
